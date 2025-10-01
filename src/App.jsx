@@ -67,12 +67,30 @@ import './App.css'
 // }
 // export default App;
 
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import NotesPage from './pages/NotesPage';
+import SharedNotePage from './pages/SharedNotePage';
+
 function App() {
   return (
-    <div className="bg-blue-500 text-white p-4 rounded-lg shadow-lg hover:bg-blue-700">
-      <h1 className="text-4xl font-bold underline text-teal-400 animate-bounce">Hello, Tailwind!</h1>
-      <p className="mt-2 text-sm text-blue-200">Testing Tailwind CSS</p>
+    <div className="min-h-screen bg-gray-100">
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/notes" element={<NotesPage />} />
+        <Route path="/shared/:noteId" element={<SharedNotePage />} />
+      </Routes>
     </div>
   );
 }
 export default App;
+
+// function App() {
+//   return (
+//     <div className="bg-blue-500 text-white p-4 rounded-lg shadow-lg hover:bg-blue-700">
+//       <h1 className="text-4xl font-bold underline text-teal-400 animate-bounce">Hello, Tailwind!</h1>
+//       <p className="mt-2 text-sm text-blue-200">Testing Tailwind CSS</p>
+//     </div>
+//   );
+// }
+// export default App;
