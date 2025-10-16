@@ -2,7 +2,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
-  const { user, signInWithGoogle, loading } = useAuth();
+  const { user, signInWithGoogle, loading, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -70,7 +70,7 @@ function LoginPage() {
                   Go to Notes
                 </button>
                 <button
-                  onClick={() => auth.signOut().then(() => navigate('/'))}
+                  onClick={() => logout().then(() => navigate('/'))}
                   className="w-full bg-gray-100 text-teal-50 py-3 px-4 rounded-xl font-medium hover:bg-gray-200 transition-colors duration-200"
                 >
                   Sign Out
