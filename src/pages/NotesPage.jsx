@@ -164,15 +164,13 @@ function NotesPage() {
             notes.map((note) => (
               <div
                 key={note.id}
-                className={`p-3 mb-2 rounded-md cursor-pointer transition-colors ${
-                  selectedNote?.id === note.id ? 'ring-2' : ''
-                }`}
+                className="p-3 mb-2 rounded-md cursor-pointer transition-colors"
                 style={{ 
                   backgroundColor: selectedNote?.id === note.id 
-                    ? 'var(--tt-brand-color-100)' 
+                    ? 'var(--tt-brand-color-500)' 
                     : 'var(--tt-card-bg-color)',
                   borderColor: selectedNote?.id === note.id 
-                    ? 'var(--tt-brand-color-500)' 
+                    ? 'var(--tt-brand-color-600)' 
                     : 'var(--tt-border-color)',
                   border: '1px solid'
                 }}
@@ -180,13 +178,22 @@ function NotesPage() {
               >
                 <p 
                   className="font-medium truncate"
-                  style={{ color: 'var(--tt-theme-text)' }}
+                  style={{ 
+                    color: selectedNote?.id === note.id 
+                      ? 'white' 
+                      : 'var(--tt-theme-text)'
+                  }}
                 >
                   {note.title}
                 </p>
                 <p 
                   className="text-sm mt-1"
-                  style={{ color: 'var(--tt-theme-text)', opacity: 0.7 }}
+                  style={{ 
+                    color: selectedNote?.id === note.id 
+                      ? 'rgba(255, 255, 255, 0.8)' 
+                      : 'var(--tt-theme-text)', 
+                    opacity: selectedNote?.id === note.id ? 1 : 0.7
+                  }}
                 >
                   {note.createdAt?.seconds 
                     ? new Date(note.createdAt.seconds * 1000).toLocaleDateString()
@@ -200,8 +207,15 @@ function NotesPage() {
                   }}
                   className="text-sm mt-2 px-2 py-1 rounded transition-colors"
                   style={{ 
-                    color: 'var(--tt-color-red-base)',
-                    backgroundColor: 'var(--tt-color-red-inc-5)'
+                    color: selectedNote?.id === note.id 
+                      ? 'white' 
+                      : 'var(--tt-color-red-base)',
+                    backgroundColor: selectedNote?.id === note.id 
+                      ? 'rgba(255, 255, 255, 0.2)' 
+                      : 'var(--tt-color-red-inc-5)',
+                    border: selectedNote?.id === note.id 
+                      ? '1px solid rgba(255, 255, 255, 0.3)' 
+                      : 'none'
                   }}
                 >
                   Delete

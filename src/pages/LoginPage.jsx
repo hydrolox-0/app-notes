@@ -1,9 +1,11 @@
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function LoginPage() {
   const { user, signInWithGoogle, loading, logout } = useAuth();
   const navigate = useNavigate();
+  const [showAlphaWarning, setShowAlphaWarning] = useState(true);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -28,6 +30,39 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-8">
+      {/* Alpha Warning Popup */}
+      {showAlphaWarning && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 px-4" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(4px)' }}>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-scale-in">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowAlphaWarning(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Content */}
+            <div className="text-center space-y-4">
+              <div className="text-5xl">🚧</div>
+              <h2 className="text-2xl font-bold text-gray-900">Alpha Build</h2>
+              <p className="text-gray-600 leading-relaxed">
+                This is an early alpha version of the app. Things might break, and data could be wiped anytime. Still in active development.
+              </p>
+              <button
+                onClick={() => setShowAlphaWarning(false)}
+                className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-6 rounded-xl font-medium hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 shadow-md"
+              >
+                I Understand
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-sm w-full space-y-8">
         {/* Header Section */}
         <div className="text-center">
@@ -102,25 +137,8 @@ function LoginPage() {
                 </svg>
                 Sign in with Google
               </button>
-
-              {/* Additional Info */}
-              <div className="text-center">
-                <p className="text-xs text-gray-500">
-                  By continuing, you agree to our Terms of Service and Privacy Policy
-                </p>
-              </div>
             </div>
           )}
-        </div>
-
-        {/* Footer */}
-        <div className="text-center">
-          <p className="text-sm text-gray-500">
-            {user ? 'Not you?' : 'Need help?'}{' '}
-            <a href="#" className="text-blue-500 hover:text-blue-600 font-medium">
-              {user ? 'Switch accounts' : 'Contact support'}
-            </a>
-          </p>
         </div>
       </div>
     </div>
