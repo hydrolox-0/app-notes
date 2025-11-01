@@ -41,7 +41,6 @@ A modern, feature-rich note-taking application built with React and Firebase. Cr
   - Firestore (Database)
   - Hosting
 - **Routing**: React Router DOM
-- **UI Components**: Radix UI, Floating UI
 
 ## Getting Started
 
@@ -160,10 +159,6 @@ This is a student project in active development. Contributions, issues, and feat
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
-This project is open source and available under the MIT License.
-
 ## Author
 
 **hydrolox-0**
@@ -174,7 +169,7 @@ This project is open source and available under the MIT License.
 - [TipTap](https://tiptap.dev/) - Rich text editor
 - [Firebase](https://firebase.google.com/) - Backend infrastructure
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Vite](https://vitejs.dev/) - Next generation frontend tooling
+- [Vite](https://vitejs.dev/) - Frontend tool
 
 ---
 
