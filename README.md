@@ -27,6 +27,10 @@ A modern, feature-rich note-taking application built with React and Firebase. Cr
 - **Dark/Light Mode** - Theme toggle for comfortable writing
 - **Fast & Modern** - Built with Vite for lightning-fast development and builds
 
+## Screenshot
+
+![Notes App Screenshot](assets/ss1.png)
+
 ## Tech Stack
 
 - **Frontend**: React 19, Vite 7
